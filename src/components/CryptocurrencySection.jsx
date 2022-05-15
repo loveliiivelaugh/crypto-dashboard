@@ -1,17 +1,19 @@
 import React from 'react';
 import { Box, Container, Grid, Card, CardContent, Typography } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 import { useApi } from '../hook';
 
 const CryptocurrencySection = ({ topTen = false }) => {
+  const navigate = useNavigate();
   const { coins } = useApi();
   return (
     <Container maxWidth={false}>
       <Grid container spacing={2}>
         {[...coins]
           .splice(0, topTen ? 10 : coins.length)
-          .map(({ name, price, rank, iconUrl, change, symbol }) => (
+          .map(({ name, price, rank, iconUrl, change, symbol, uuid }) => (
             <Grid key={symbol} item md={3}>
-              <Card>
+              <Card onClick={() => navigate(`/coin/${uuid}`)} sx={{ cursor: 'pointer' }}>
                 <CardContent sx={{ textAlign: 'center' }}>
                   <img src={iconUrl} alt="Coin icon" style={{ height: '75px' }}></img>
                   <Typography variant="h4">{name}</Typography>

@@ -1,5 +1,5 @@
 import { createContext, useCallback, useContext, useEffect, useState } from 'react';
-import { bing, coinranking } from '../api';
+import { bing, coingecko, coinranking } from '../api';
 
 const ApiContext = createContext();
 // app api context
@@ -16,31 +16,25 @@ export const ApiProvider = ({ children }) => {
     const [
       { data: { coins, stats }}, // Coinranking data
       { value }, // crypto news
-      // exchangeData
+      exchanges
     ] = await Promise.all([
       coinranking.getCoins(),
       bing.getNews(),
-      // api.getExchanges()
+      coingecko.getExchanges()
     ]);
 
-    return { coins, stats, news: value, 
-      // exchanges: exchangeData.data 
-    };
+    return { coins, stats, news: value, exchanges };
   }, []);
 
   useEffect(() => {
     (async () => {
-      const { coins, stats, news, 
-        // exchanges 
-      } = await initialLoad();
-      setState(prevState => ({ ...prevState, coins, stats, news,
-        //  exchanges, 
-        loading: false }));
+      const { coins, stats, news, exchanges } = await initialLoad();
+      setState(prevState => ({ ...prevState, coins, stats, news, exchanges, loading: false }));
     })();
   }, []);
 
   return ApiContext.Provider
-    ? <ApiContext.Provider value={{ ...state }}>{children}</ApiContext.Provider>
+    ? <ApiContext.Provider value={{...state }}>{children}</ApiContext.Provider>
     : children;
 }
 // custom hook consuming API context in order to pass state to components

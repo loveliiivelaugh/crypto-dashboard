@@ -1,30 +1,34 @@
-import React, { Fragment, Suspense, lazy } from 'react';
+import React, { Suspense, lazy } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Drawer from '../components/Drawer';
-
+// lazy load pages
 const Home = lazy(() => import('./Home'));
 const Cryptocurrencies = lazy(() => import('./Currencies'));
-// const Exchanges = lazy(() => import('./Exchanges'));
+const Exchanges = lazy(() => import('./Exchanges'));
 const News = lazy(() => import('./News'));
-
+const CurrencyDetails = lazy(() => import('./CurrencyDetails'));
+// lazy load components
+const Drawer = lazy(() => import('../components/Drawer'));
+const Footer = lazy(() => import('../components/Footer'));
+// routes
 const routes = [
   { path: '/', element: <Home /> },
   { path: '/cryptocurrencies', element: <Cryptocurrencies /> },
-  // { path: '/exchanges', element: <Exchanges /> },
+  { path: '/exchanges', element: <Exchanges /> },
   { path: '/news', element: <News /> },
+  { path: '/coin/:uuid', element: <CurrencyDetails /> },
 ];
-
+// render
 const PageRouter = () => (
-  <Fragment>
+  <Suspense fallback="Loading...">
     <Router>
       <Drawer content={(
-        <Suspense fallback="Loading...">
+        <>
           <Routes>{routes.map((route, i) => <Route key={i}{...route} />)}</Routes>
-        </Suspense>
+          <Footer />
+        </>
       )}/>
-      <div>Footer</div>
     </Router>
-  </Fragment>
+  </Suspense>
 )
 
 export default PageRouter
