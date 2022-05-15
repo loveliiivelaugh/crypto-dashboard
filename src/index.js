@@ -1,13 +1,12 @@
 import { StrictMode } from 'react';
 import ReactDOM from 'react-dom/client';
-// import App from './App';
 import PageRouter from './pages/PageRouter';
 import { ApiProvider } from './hook';
 import reportWebVitals from './reportWebVitals';
 import './index.css';
 
-
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
 root.render(
   <StrictMode>
     <ApiProvider>

@@ -15,11 +15,8 @@ const client = axios.create({
 });
 
 export const bing = {
-
   getNews: async () => await client.get('/news').then(({ data }) => data),
-  
   getTrending: async () => await client.get('/trendingtopics').then(({ data }) => data),
-
   searchNews: async q => q 
     ? await client
       .get('/search', { params: { q }})

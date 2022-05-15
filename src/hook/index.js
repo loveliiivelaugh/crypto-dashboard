@@ -2,7 +2,7 @@ import { createContext, useCallback, useContext, useEffect, useState } from 'rea
 import { bing, coinranking } from '../api';
 
 const ApiContext = createContext();
-
+// app api context
 export const ApiProvider = ({ children }) => {
   const [state, setState] = useState({
     loading: true,
@@ -43,7 +43,7 @@ export const ApiProvider = ({ children }) => {
     ? <ApiContext.Provider value={{ ...state }}>{children}</ApiContext.Provider>
     : children;
 }
-
+// custom hook consuming API context in order to pass state to components
 export const useApi = () => {
   const context = useContext(ApiContext);
   if (context === undefined) {
