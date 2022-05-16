@@ -16,7 +16,7 @@ export const ApiProvider = ({ children }) => {
     const [
       { data: { coins, stats }}, // Coinranking data
       { value }, // crypto news
-      exchanges
+      exchanges // list of exchanges
     ] = await Promise.all([
       coinranking.getCoins(),
       bing.getNews(),
