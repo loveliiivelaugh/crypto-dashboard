@@ -1,13 +1,6 @@
 import React from 'react';
-import { Container } from '@mui/material';
 import ExchangesSection from '../components/ExchangesSection';
 
-const Exchanges = () => {
-  return (
-    <Container maxWidth={false}>
-      <ExchangesSection />
-    </Container>
-  )
-}
+const Exchanges = () => <ExchangesSection />;
 
-export default Exchanges
+export default Exchanges;

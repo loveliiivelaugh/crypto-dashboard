@@ -6,7 +6,7 @@ import { useApi } from '../hook';
 const ExchangesSection = () => {
   const { exchanges } = useApi();
   
-  const formatCols = exchanges => exchanges && Object
+  const makeCols = exchanges => Object
     .keys(exchanges[0])
     .map(key => ({ 
       key, 
@@ -18,10 +18,7 @@ const ExchangesSection = () => {
 
   return (
     <Grid container>
-      <Toolbar>
-        <Typography variant="h4">Exchanges</Typography>
-      </Toolbar>
-      <MuiDatagrid columns={formatCols(exchanges)} rows={exchanges}/>
+      <MuiDatagrid columns={makeCols(exchanges)} rows={exchanges}/>
     </Grid>
   )
 }
