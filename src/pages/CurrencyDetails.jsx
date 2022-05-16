@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { coinranking } from '../api';
 import { Container, Card, CardContent, Grid, Typography } from '@mui/material';
-import LineChart from '../components/recharts/LineChart';
+import LineChart from '../components/LineChart';
 
 const CurrencyDetails = () => {
   const [loading, setLoading] = useState(true);
@@ -13,7 +13,6 @@ const CurrencyDetails = () => {
   const fetchCoin = async () => {
     try {
       const { data: { coin }} = await coinranking.getCoin(uuid);
-      console.log({ coin });
       setCoin(coin);
     } 
     catch (error) {console.error('Error fetching coin', { error });}
