@@ -1,21 +1,19 @@
+import { createRoot } from 'react-dom/client';
 import { StrictMode } from 'react';
-import ReactDOM from 'react-dom/client';
-import PageRouter from './pages/PageRouter';
 import { ApiProvider } from './hook';
 import { ThemeProvider } from './theme';
+import PageRouter from './pages/PageRouter';
 import reportWebVitals from './reportWebVitals';
 import './index.css';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-
-root.render(
-  <StrictMode>
-    <ApiProvider>
-      <ThemeProvider>
-        <PageRouter />
-      </ThemeProvider>
-    </ApiProvider>
-  </StrictMode>
+createRoot(document.getElementById('root')).render(
+<StrictMode>
+  <ApiProvider>
+    <ThemeProvider>
+      <PageRouter />
+    </ThemeProvider>
+  </ApiProvider>
+</StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function
