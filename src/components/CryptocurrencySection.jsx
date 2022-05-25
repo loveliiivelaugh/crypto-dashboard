@@ -1,11 +1,17 @@
-import React from 'react';
-import { Box, Button, Grid, Card, CardContent, Typography } from '@mui/material';
+import React, { useEffect, useState } from 'react';
+import { Box, Button, CircularProgress, Grid, Card, CardContent, Typography } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
-import { useApi } from '../hook';
+import { coinranking } from '../api';
 
 const CryptocurrencySection = ({ topTen = false }) => {
   const navigate = useNavigate();
-  const { coins } = useApi();
+  const [coins, setCoins] = useState([]);
+  useEffect(() => {
+    (async () => {
+      const { data: { coins }} = await coinranking.getCoins();
+      setCoins(coins);
+    })();
+  });
   return (
     <>
       <Typography variant="h2" gutterBottom>
@@ -17,7 +23,7 @@ const CryptocurrencySection = ({ topTen = false }) => {
         </Button>
       )}
       <Grid container spacing={2}>
-        {[...coins]
+        {coins.length ? [...coins]
           .splice(0, topTen ? 10 : coins.length)
           .map(({ name, price, rank, iconUrl, change, symbol, uuid }) => (
             <Grid key={symbol} item md={3}>
@@ -34,7 +40,7 @@ const CryptocurrencySection = ({ topTen = false }) => {
                 </CardContent>
               </Card>
             </Grid>
-        ))}
+        )) : <CircularProgress />}
       </Grid>
     </>
   )

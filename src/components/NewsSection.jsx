@@ -1,21 +1,24 @@
 import React, { useEffect, useState } from 'react';
-import { Card, CardContent, Grid, Typography } from '@mui/material';
-import { useApi } from '../hook';
+import { Card, CardContent, CircularProgress, Grid, Typography } from '@mui/material';
+// import { useApi } from '../hook';
 import { bing } from '../api';
 
 const NewsSection = () => {
-  const { news } = useApi();
-  // const [refreshedNews, setRefreshedNews] = useState(null);
-  // useEffect(() => {
-  //   (async () => setRefreshedNews(await bing.getNews().value))();
-  // }, []);
+  // const { news } = useApi();
+  const [news, setNews] = useState([]);
+  useEffect(() => {
+    (async () => {
+      const { value } = await bing.getNews();
+      setNews(value);
+    })();
+  });
   return (
     <>
       <Typography variant="h2" gutterBottom>
         Top Stories in Crypto News
       </Typography>
       <Grid container>
-        {news.map(({ name, description, provider, datePublished, image, url }, i) => (
+        {news.length ? news.map(({ name, description, provider, datePublished, image, url }, i) => (
           <Grid key={i} item md={4}>
             <Card sx={{ m: 1, p: 1, cursor: 'pointer' }} onClick={() => window.open(url)}>
               <CardContent>
@@ -34,7 +37,7 @@ const NewsSection = () => {
               </CardContent>
             </Card>
           </Grid>
-        ))}
+        )) : <CircularProgress />}
       </Grid>
     </>
   )

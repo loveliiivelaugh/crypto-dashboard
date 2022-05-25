@@ -1,20 +1,36 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Container, Typography } from '@mui/material';
+import { Container, Grid, Typography } from '@mui/material';
+
+const linkStyle = { color: 'white', textAlign: 'center', textDecoration: 'none' };
 
 const Footer = () => (
   <Container maxWidth={false} sx={{ margin: '40px 0' }}>
     <Link to="/">
-      <Typography variant="h5" style={{ color: 'white', textAlign: 'center' }}>
+      <Typography variant="body1" style={linkStyle}>
+        Home
+      </Typography>
+    </Link>
+    <Link to="/exchanges">
+      <Typography variant="body1" style={linkStyle}>
+        Exchanges
+      </Typography>
+    </Link>
+    <Link to="/news">
+      <Typography variant="body1" style={linkStyle}>
+        News
+      </Typography>
+    </Link>
+    <Link to="/cryptocurrencies">
+      <Typography variant="body1" style={linkStyle}>
+        Cryptocurrencies
+      </Typography>
+    </Link>
+    <Link to="/">
+      <Typography variant="h5" style={linkStyle}>
         Copyright © 2021 All Rights Reserved.
       </Typography>
     </Link>
-    <center>
-      <Link to="/">Home</Link>
-      <Link to="/exchanges">Exchanges</Link>
-      <Link to="/news">News</Link>
-      <Link to="/cryptocurrencies">Cryptocurrencies</Link>
-    </center>
   </Container>
 )
 
