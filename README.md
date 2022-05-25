@@ -2,7 +2,7 @@
 
 A dashboard built with ReactJS and [D3.js](https://d3js.org/). The dashboard features information about the top cryptocurrencies by market cap, price, and volume. The data is pulled from [CoinGecko](https://www.coingecko.com/), [CoinRanking](https://coinranking.com/), and [Bing](https://www.bing.com/).
 
-[Screenshot](./src/assets/images/crypto-dashboard.png)
+![Screenshot](./src/assets/images/crypto-dashboard.png)
 ## Features
 
   * [D3.js](https://d3js.org/)
@@ -38,6 +38,7 @@ There is a local custom hook that allows you to fetch all the crypto data at onc
 
 Send some love 💛
 0xe5F6BC85E03d7aC6819C97ac1dB1d2a237C05Edf
+
 michaelwoodward.eth
 
 ## Inspiration
