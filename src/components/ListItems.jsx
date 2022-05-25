@@ -1,19 +1,15 @@
 import React from 'react';
 import  { ListItemButton, ListItemIcon, ListItemText, ListSubheader } from '@mui/material';
-import DashboardIcon from '@mui/icons-material/Dashboard';
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import PeopleIcon from '@mui/icons-material/People';
-import BarChartIcon from '@mui/icons-material/BarChart';
-import LayersIcon from '@mui/icons-material/Layers';
-import AssignmentIcon from '@mui/icons-material/Assignment';
+import HomeIcon from '@mui/icons-material/Home';
+import CurrencyBitcoinIcon from '@mui/icons-material/CurrencyBitcoin';
+import CurrencyExchangeIcon from '@mui/icons-material/CurrencyExchange';
+import NewspaperIcon from '@mui/icons-material/Newspaper';
 
 const icons  = [
-  <DashboardIcon />,
-  <ShoppingCartIcon />,
-  <PeopleIcon />,
-  <BarChartIcon />,
-  <LayersIcon />,
-  <AssignmentIcon />
+  <HomeIcon />,
+  <CurrencyBitcoinIcon />,
+  <CurrencyExchangeIcon />,
+  <NewspaperIcon />,
 ];
 
 export const ListItems = ({ items, handleClick })  => items.map(({ title }, index) => index === 0 ? (

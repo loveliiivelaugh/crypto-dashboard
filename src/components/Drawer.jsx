@@ -3,9 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import { styled } from '@mui/material/styles';
 import { Box, CssBaseline, Divider, List, IconButton, Toolbar } from '@mui/material';
 import MuiDrawer from '@mui/material/Drawer';
-import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-import NotificationsIcon from '@mui/icons-material/Notifications';
 import { ListItems } from './ListItems';
+import logo from '../images/logo-white.png';
 
 const drawerWidth = 240;
 
@@ -38,8 +37,6 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 
 export default function SideDrawer({ content }) {
   const navigate = useNavigate();
-  const [open, setOpen] = useState(true);
-  const toggleDrawer = () => setOpen(!open);
   const handleClick = path => navigate(path === 'Home' ? '/' : path.toLowerCase());
 
   const items = [
@@ -55,8 +52,8 @@ export default function SideDrawer({ content }) {
         <CssBaseline />
         <Drawer variant="permanent" open>
           <Toolbar sx={{ display: 'flex', px: [1] }}>
-            <IconButton onClick={toggleDrawer}>
-              <ChevronLeftIcon />
+            <IconButton onClick={() => navigate('/')}>
+              <img src={logo} alt="logo" style={{ height: '75px' }} />
             </IconButton>
           </Toolbar>
           <Divider />

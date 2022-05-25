@@ -74,9 +74,7 @@ const CurrencyDetails = () => {
         <Grid item xs={12}>
           <Card sx={{ m: 4 }}>
             <CardContent>
-              <Typography variant="body1" component="p">
-                {[coin.description]}
-              </Typography>
+              {coin.description}
             </CardContent>
           </Card>
         </Grid>
