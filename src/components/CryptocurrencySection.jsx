@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Container, Grid, Card, CardContent, Typography } from '@mui/material';
+import { Box, Button, Grid, Card, CardContent, Typography } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { useApi } from '../hook';
 
@@ -7,7 +7,15 @@ const CryptocurrencySection = ({ topTen = false }) => {
   const navigate = useNavigate();
   const { coins } = useApi();
   return (
-    <Container maxWidth={false}>
+    <>
+      <Typography variant="h2" gutterBottom>
+        Top {topTen && 10} Cryptos in The World
+      </Typography>
+      {topTen && (
+        <Button variant="text" color="primary" onClick={() => navigate('/cryptocurrencies')}>
+          Show more
+        </Button>
+      )}
       <Grid container spacing={2}>
         {[...coins]
           .splice(0, topTen ? 10 : coins.length)
@@ -15,10 +23,10 @@ const CryptocurrencySection = ({ topTen = false }) => {
             <Grid key={symbol} item md={3}>
               <Card onClick={() => navigate(`/coin/${uuid}`)} sx={{ cursor: 'pointer' }}>
                 <CardContent sx={{ textAlign: 'center' }}>
-                  <img src={iconUrl} alt="Coin icon" style={{ height: '75px' }}></img>
+                  <img src={iconUrl} alt="Coin icon" style={{ height: '50px' }}></img>
                   <Typography variant="h4">{name}</Typography>
                   <Typography variant="body1" component="p"><small>{symbol}</small></Typography>
-                  <Typography variant="h4" component="p"><small>${parseInt(price).toFixed(2)}</small></Typography>
+                  <Typography variant="h5" component="p"><small>${parseInt(price).toFixed(2)}</small></Typography>
                   <Typography variant="body1" component="p">Rank: {rank}</Typography>
                   <Box sx={{ p: 2 }}>
                     <Typography variant="body1" component="p">24h {change}%</Typography>
@@ -28,7 +36,7 @@ const CryptocurrencySection = ({ topTen = false }) => {
             </Grid>
         ))}
       </Grid>
-    </Container>
+    </>
   )
 }
 

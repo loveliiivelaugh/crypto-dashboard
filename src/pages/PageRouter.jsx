@@ -24,7 +24,7 @@ const PageRouter = () => (
       <Drawer content={(
         <>
           <Routes>{routes.map((route, i) => <Route key={i}{...route} />)}</Routes>
-          {/* <Footer /> */}
+          <Footer />
         </>
       )}/>
     </Router>

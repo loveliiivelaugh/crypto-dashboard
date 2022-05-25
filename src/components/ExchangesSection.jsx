@@ -17,9 +17,15 @@ const ExchangesSection = () => {
     }));
 
   return (
-    <Grid container>
-      <MuiDatagrid columns={makeCols(exchanges)} rows={exchanges}/>
-    </Grid>
+    <>
+      <Typography variant="h2" gutterBottom>
+        Top Crypto Exchanges
+      </Typography>
+      <Grid container>
+        <MuiDatagrid columns={makeCols(exchanges)} rows={exchanges}/>
+      </Grid>
+      <br/>
+    </>
   )
 }
 

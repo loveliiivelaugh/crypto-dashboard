@@ -10,26 +10,33 @@ const NewsSection = () => {
   //   (async () => setRefreshedNews(await bing.getNews().value))();
   // }, []);
   return (
-    <Grid container>
-      {news.map(({ name, description, provider, datePublished, image, url }, i) => (
-        <Grid key={i} item md={4}>
-          <Card sx={{ m: 1, p: 1 }} onClick={() => window.open(url)}>
-            <CardContent>
-              <img src={image?.thumbnail.contentUrl} alt={name} style={{ height: '200px' }} />
-              <Typography variant="h5">
-                {name}
-              </Typography>
-              <Typography variant="body1" component="p">
-                {description}
-              </Typography>
-              <Typography variant="body1" component="p">
-                <small style={{ color: '#555' }}>{datePublished}</small>
-              </Typography>
-            </CardContent>
-          </Card>
-        </Grid>
-      ))}
-    </Grid>
+    <>
+      <Typography variant="h2" gutterBottom>
+        Top Stories in Crypto News
+      </Typography>
+      <Grid container>
+        {news.map(({ name, description, provider, datePublished, image, url }, i) => (
+          <Grid key={i} item md={4}>
+            <Card sx={{ m: 1, p: 1, cursor: 'pointer' }} onClick={() => window.open(url)}>
+              <CardContent>
+                <center>
+                  <img src={image?.thumbnail.contentUrl} alt={name} style={{ width: '100%' }} />
+                </center>
+                <Typography variant="h5" gutterBottom>
+                  {name}
+                </Typography>
+                <Typography variant="subtitle1" component="p" gutterBottom>
+                  {description}
+                </Typography>
+                <Typography variant="subtitle2" component="p" textAlign="right">
+                  {new Date(datePublished).getUTCDate()} {new Date(datePublished).toLocaleString('en-us', { month: 'long' })} {new Date(datePublished).getUTCFullYear()}
+                </Typography>
+              </CardContent>
+            </Card>
+          </Grid>
+        ))}
+      </Grid>
+    </>
   )
 }
 

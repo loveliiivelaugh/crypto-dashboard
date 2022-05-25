@@ -16,12 +16,12 @@ const Banner = () => {
 
   return (
     <>
-      <Typography variant="h2">Global Crypto Stats</Typography>
+      <Typography variant="h2" gutterBottom>Global Crypto Stats</Typography>
       <Grid container>
         {Object.keys(stats).map((stat, i) => (
           <Grid key={i} item xs={12} sm={6}>
             <Typography variant="h5">{formatStats(stat)}</Typography>
-            <Typography variant="body1" component="p">{stats[stat]}</Typography>
+            <Typography variant="subtitle1" component="p">{stats[stat]}</Typography>
           </Grid>
         ))}
       </Grid>

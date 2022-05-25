@@ -8,16 +8,9 @@ const Home = () => {
   return (
     <Container maxWidth={false}>
       <Banner />
-      <Typography variant="h2">
-        Top 10 Cryptos in The World
-      </Typography>
-      <Button variant="text" color="primary">
-        Show more
-      </Button>
+      <br/>
       <CryptocurrencySection topTen />
-      <Typography variant="h2">
-        Top Stories in Crypto News
-      </Typography>
+      <br/>
       <NewsSection />
     </Container>
   )

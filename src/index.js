@@ -2,6 +2,7 @@ import { StrictMode } from 'react';
 import ReactDOM from 'react-dom/client';
 import PageRouter from './pages/PageRouter';
 import { ApiProvider } from './hook';
+import { ThemeProvider } from './theme';
 import reportWebVitals from './reportWebVitals';
 import './index.css';
 
@@ -10,7 +11,9 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <StrictMode>
     <ApiProvider>
-      <PageRouter />
+      <ThemeProvider>
+        <PageRouter />
+      </ThemeProvider>
     </ApiProvider>
   </StrictMode>
 );

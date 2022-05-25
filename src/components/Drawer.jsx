@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { styled, createTheme, ThemeProvider } from '@mui/material/styles';
+import { styled } from '@mui/material/styles';
 import { Box, CssBaseline, Divider, List, IconButton, Toolbar } from '@mui/material';
 import MuiDrawer from '@mui/material/Drawer';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
@@ -35,7 +35,6 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
   }),
 );
 
-const mdTheme = createTheme();
 
 export default function SideDrawer({ content }) {
   const navigate = useNavigate();
@@ -52,7 +51,6 @@ export default function SideDrawer({ content }) {
   ];
 
   return (
-    <ThemeProvider theme={mdTheme}>
       <Box sx={{ display: 'flex' }}>
         <CssBaseline />
         <Drawer variant="permanent" open>
@@ -69,10 +67,6 @@ export default function SideDrawer({ content }) {
         <Box
           component="main"
           sx={{
-            backgroundColor: (theme) =>
-              theme.palette.mode === 'light'
-                ? theme.palette.grey[100]
-                : theme.palette.grey[900],
             flexGrow: 1,
             height: '100vh',
             overflow: 'auto',
@@ -82,6 +76,5 @@ export default function SideDrawer({ content }) {
           {content}
         </Box>
       </Box>
-    </ThemeProvider>
   );
 }
