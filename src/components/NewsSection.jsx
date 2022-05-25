@@ -20,7 +20,7 @@ const NewsSection = () => {
             <Card sx={{ m: 1, p: 1, cursor: 'pointer' }} onClick={() => window.open(url)}>
               <CardContent>
                 <center>
-                  <img src={image?.thumbnail.contentUrl} alt={name} style={{ width: '100%' }} />
+                  <img src={image?.thumbnail.contentUrl} alt={name} style={{ width: '40%' }} />
                 </center>
                 <Typography variant="h5" gutterBottom>
                   {name}

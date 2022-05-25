@@ -18,6 +18,9 @@ const theme = createTheme({
         default: colors.grey["900"],
         paper: colors.grey["800"],
       },
+      text: {
+        primary: colors.grey["200"],
+      },
     },
     common: {
       typography: {
@@ -64,7 +67,6 @@ const theme = createTheme({
 
 export const ThemeProvider = ({ children }) => (
   <MuiThemeProvider theme={theme}>
-  {console.log({ colors })}
     <CssBaseline />
     {children}
   </MuiThemeProvider>
