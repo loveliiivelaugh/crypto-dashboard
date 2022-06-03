@@ -1,24 +1,35 @@
 import React, { useEffect, useState } from 'react';
-import { Card, CardContent, CircularProgress, Grid, Typography } from '@mui/material';
+import { Alert, AlertTitle, Card, CardContent, CircularProgress, Grid, Typography } from '@mui/material';
 // import { useApi } from '../hook';
 import { bing } from '../api';
 
 const NewsSection = () => {
   // const { news } = useApi();
   const [news, setNews] = useState([]);
+  const [error, setError] = useState(null);
   useEffect(() => {
     (async () => {
-      const { value } = await bing.getNews();
-      setNews(value);
+      try {
+        const { value } = await bing.getNews();
+        setNews(value);
+      } catch (problem) {
+        console.error(problem);
+        setError(new Error(problem));
+      }
     })();
-  });
+  }, []);
   return (
     <>
       <Typography variant="h2" gutterBottom>
         Top Stories in Crypto News
       </Typography>
       <Grid container>
-        {news.length ? news.map(({ name, description, provider, datePublished, image, url }, i) => (
+        {error ? (
+          <Alert severity="error">
+            <AlertTitle>Error</AlertTitle>
+            {error.message}
+          </Alert>
+        ) : news.length ? news.map(({ name, description, provider, datePublished, image, url }, i) => (
           <Grid key={i} item md={4}>
             <Card sx={{ m: 1, p: 1, cursor: 'pointer' }} onClick={() => window.open(url)}>
               <CardContent>

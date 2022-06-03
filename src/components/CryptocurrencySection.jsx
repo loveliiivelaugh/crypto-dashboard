@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { Box, Button, CircularProgress, Grid, Card, CardContent, Typography } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
+import { Box, Button, CircularProgress, Grid, Card, CardContent, Typography } from '@mui/material';
 import { coinranking } from '../api';
 
 const CryptocurrencySection = ({ topTen = false }) => {
@@ -11,7 +11,7 @@ const CryptocurrencySection = ({ topTen = false }) => {
       const { data: { coins }} = await coinranking.getCoins();
       setCoins(coins);
     })();
-  });
+  }, []);
   return (
     <>
       <Typography variant="h2" gutterBottom>
@@ -26,16 +26,16 @@ const CryptocurrencySection = ({ topTen = false }) => {
         {coins.length ? [...coins]
           .splice(0, topTen ? 10 : coins.length)
           .map(({ name, price, rank, iconUrl, change, symbol, uuid }) => (
-            <Grid key={symbol} item md={3}>
+            <Grid key={symbol} item xs={12} sm={6} md={4} lg={3}>
               <Card onClick={() => navigate(`/coin/${uuid}`)} sx={{ cursor: 'pointer' }}>
                 <CardContent sx={{ textAlign: 'center' }}>
-                  <img src={iconUrl} alt="Coin icon" style={{ height: '50px' }}></img>
+                  <img src={iconUrl} alt="Coin icon" style={{ height: '5vh' }}></img>
                   <Typography variant="h4">{name}</Typography>
-                  <Typography variant="body1" component="p"><small>{symbol}</small></Typography>
+                  <Typography variant="subtitle2" component="p"><small>{symbol}</small></Typography>
                   <Typography variant="h5" component="p"><small>${parseInt(price).toFixed(2)}</small></Typography>
                   <Typography variant="body1" component="p">Rank: {rank}</Typography>
                   <Box sx={{ p: 2 }}>
-                    <Typography variant="body1" component="p">24h {change}%</Typography>
+                    <Typography variant="subtitle1" component="p">24h {change}%</Typography>
                   </Box>
                 </CardContent>
               </Card>
